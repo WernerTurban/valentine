@@ -2,6 +2,7 @@
 body {
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
+    linear-gradient(rgba(0,0,0,0.26), rgba(0,0,0,0.34)),
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 60%),
     radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.25), transparent 55%),
     radial-gradient(circle at 15% 80%, rgba(186, 104, 200, 0.55), transparent 60%),   /* soft purple glow */
@@ -40,6 +41,7 @@ body::after{
     radial-gradient(circle at 12% 85%, rgba(255, 143, 163, 0.65) 0, transparent 60%),
     radial-gradient(circle at 92% 18%, rgba(255, 179, 198, 0.7) 0, transparent 55%);
   animation: driftHearts 22s ease-in-out infinite alternate;
+  opacity:0.32;
 }
 
 @keyframes driftHearts{
