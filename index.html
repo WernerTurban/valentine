@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Date 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <p id="stepIndicator" class="step-indicator"></p>
+  <p id="validationMessage" class="validation-message"></p>
+
+  <div class="floating-hearts">
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+    <span>♥</span>
+  </div>
+
+  <div id="heartTopWrapper">
+    <div class="heart-container" id="heartContainer">
+      <svg viewBox="0 0 100 90" class="heart-svg" id="heartSvg">
+        <defs>
+          <mask id="heartMask">
+            <rect x="0" y="0" width="100" height="90" fill="black" />
+            <path d="
+              M50 80
+              C35 70, 18 55, 18 38
+              C18 26, 27 18, 37 18
+              C44 18, 50 22, 50 27
+              C50 22, 56 18, 63 18
+              C73 18, 82 26, 82 38
+              C82 55, 65 70, 50 80Z"
+              fill="white"/>
+          </mask>
+
+          <linearGradient id="heartGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ff6b9c" />
+            <stop offset="100%" stop-color="#ff2e63" />
+          </linearGradient>
+
+          <filter id="heartGlow">
+            <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#ff4d6d" flood-opacity="0.7" />
+            <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ffb3c6" flood-opacity="0.9" />
+          </filter>
+        </defs>
+
+  
+        <rect x="0" y="0" width="100" height="90" fill="none" />
+
+        <rect id="heartFill" class="heart-fill" x="0" y="90" width="100" height="0" mask="url(#heartMask)" fill="url(#heartGradient)"/>
+
+        <path id="heartOutline" class="heart-outline" d="
+          M50 80
+          C35 70, 18 55, 18 38
+          C18 26, 27 18, 37 18
+          C44 18, 50 22, 50 27
+          C50 22, 56 18, 63 18
+          C73 18, 82 26, 82 38
+          C82 55, 65 70, 50 80Z"
+          filter="url(#heartGlow)"/>
+
+
+        <path id="heartLeft" class="heart-break half hidden" d="
+          M50 82
+          C20 60, 0 40, 25 20
+          C40 5, 50 20, 50 20Z"/>
+        <path id="heartRight" class="heart-break half hidden" d="
+          M50 82
+          C80 60, 100 40, 75 20
+          C60 5, 50 20, 50 20Z"/>
+      </svg>
+    </div>
+  </div>
+
+  <section class="page active" id="introPage">
+    <h1>Our Valentine’s night 💌</h1>
+    <p class="page-subtitle">
+      A cozy evening with pasta, snacks and the perfect movie – crafted just for us.
+    </p>
+    <div class="intro-copy">
+      <p>We’ll plan it step by step:</p>
+      <p>first dinner, then snacks, then the story we’ll get lost in together.</p>
+    </div>
+    <div class="action-buttons">
+      <button onclick="nextPage('intro')">Let's go ➡️</button>
+      <button class="end" onclick="endProcess()">This is lame ❌</button>
+    </div>
+  </section>
+
+  <section class="page" id="foodPage">
+    <h1>Choose our pasta dish 🍝</h1>
+    <p class="page-subtitle">Which bowl of pasta are we sharing tonight?</p>
+    <img src="pictures/pasta.jpg" alt="Pasta dish on white ceramic plate" class="pasta-hero" />
+    <div class="options">
+      <div class="option" data-food="Aglio e Olio">
+        <p>Aglio e Olio</p>
+      </div>
+      <div class="option" data-food="Cacio e Pepe">
+        <p>Cacio e Pepe</p>
+      </div>
+      <div class="option" data-food="Cajun Chicken Pasta">
+        <p>Cajun Chicken Pasta</p>
+      </div>
+      <div class="option" data-food="Creamy Chicken Pasta">
+        <p>Pesto Chicken Pasta</p>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button onclick="nextPage('food')">Lock in this pasta ➡️</button>
+      <button class="end" onclick="endProcess()">Let’s skip the date ❌</button>
+    </div>
+  </section>
+
+  <section class="page" id="snackPage">
+    <h1>Snacks for the movie 🍿</h1>
+    <p class="page-subtitle">Sweet, salty, or a little bit of both?</p>
+    <p class="snack-caption">I’ll surprise you with something to nibble while we watch.</p>
+    <div class="action-buttons">
+      <button onclick="nextPage('snack')">On to the movie ➡️</button>
+      <button class="end" onclick="endProcess()">Let’s not ❌</button>
+    </div>
+  </section>
+
+  <section class="page" id="moviePage">
+    <h1>Pick a movie 🎬</h1>
+    <p class="page-subtitle">Which story do you want us to get lost in?</p>
+    <ul class="movie-list">
+      <li>Eternity</li>
+      <li>Hamnet</li>
+      <li>Die My Love</li>
+      <li>Sentimental Value</li>
+      <li>A Big Bold Beautiful Journey</li>
+    </ul>
+    <div class="action-buttons">
+      <button onclick="nextPage('movie')">This is our movie ➡️</button>
+      <button class="end" onclick="endProcess()">I don't like any of them ❌</button>
+    </div>
+  </section>
+
+  <section class="page" id="movieMoodPage">
+    <h1>Setting the mood 🎥</h1>
+    <p class="page-subtitle">Lights low, blankets ready, just us and the screen.</p>
+    <p class="movie-caption">Now there’s just one more question left…</p>
+    <div class="action-buttons">
+      <button onclick="nextPage('mood')">Ask the big question ➡️</button>
+      <button class="end" onclick="endProcess()">Let’s call it off ❌</button>
+    </div>
+  </section>
+
+  <section class="page" id="questionPage">
+    <h1>Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+      <button class="yes" onclick="showResult()">Yes 💕</button>
+      <button class="no" onmouseover="moveNo(this)">No 😢</button>
+    </div>
+  </section>
+
+  <section class="page" id="resultPage">
+    <h1>It’s a date! 💘</h1>
+    <p id="resultText"></p>
+    <img src="pictures/spaghetti.png" alt="Spaghetti on plate" class="result-image" />
+    <div id="heartResultWrapper"></div>
+    <canvas id="confetti"></canvas>
+  </section>
+
+  <section class="page" id="sadPage">
+    <h1>Oh no…</h1>
+    <img src="pictures/heartbreak.jpg" alt="Paper heart patched back together" class="sad-image"/>
+    <p>It stings a little now, but even cracked hearts learn how to beat softly again.</p>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
